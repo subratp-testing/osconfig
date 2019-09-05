@@ -50,6 +50,8 @@ func Enqueue(name string, f func()) {
 func Close() {
 	fmt.Printf("close called\n")
 	mx.Lock()
+	close(tc)
+	fmt.Printf("closed the channel\n")
 	wg.Wait()
 	fmt.Printf("close end\n")
 }

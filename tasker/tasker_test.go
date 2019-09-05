@@ -36,11 +36,9 @@ var lock sync.Mutex
 // to a common file
 func TestEnqueue_taskRunSequentially(t *testing.T) {
 	for i := 0; i < 5; i++ {
-		AddToQueue()
-
+		go AddToQueue()
 	}
 	fmt.Printf("added all tasks\n")
-	fmt.Printf("sleeping for 15 sec...\n")
 	Close()
 	fmt.Printf("tasker closed\n")
 
